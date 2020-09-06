@@ -31,9 +31,11 @@ let Sprite_3 = game.createSprite(0, 0)
 let Sprite_4 = game.createSprite(0, 0)
 let Sprite_5 = game.createSprite(0, 0)
 let Snelheid = 1000
+let Score = -1
 game.pause()
 basic.forever(function () {
     while (game.isRunning()) {
+        Score += 1
         Sprite_1.delete()
         Sprite_2.delete()
         Sprite_3.delete()
@@ -87,14 +89,19 @@ basic.forever(function () {
 })
 basic.forever(function () {
     if (Player.isTouching(Sprite_1) && Deleted_sprite != 0) {
+        game.setScore(Score)
         game.gameOver()
     } else if (Player.isTouching(Sprite_2) && Deleted_sprite != 1) {
+        game.setScore(Score)
         game.gameOver()
     } else if (Player.isTouching(Sprite_3) && Deleted_sprite != 2) {
+        game.setScore(Score)
         game.gameOver()
     } else if (Player.isTouching(Sprite_4) && Deleted_sprite != 3) {
+        game.setScore(Score)
         game.gameOver()
     } else if (Player.isTouching(Sprite_5) && Deleted_sprite != 4) {
+        game.setScore(Score)
         game.gameOver()
     }
 })
