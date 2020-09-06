@@ -13,21 +13,21 @@ WSJoyStick.onKey(KEY.C, function () {
 let list: game.LedSprite[] = []
 let Deleted_sprite = 0
 let Direction2 = 0
-let Sprite_5: game.LedSprite = null
-let Sprite_4: game.LedSprite = null
-let Sprite_3: game.LedSprite = null
-let Sprite_2: game.LedSprite = null
-let Sprite_1: game.LedSprite = null
 let Player: game.LedSprite = null
 WSJoyStick.JoyStickInit()
 Player = game.createSprite(2, 2)
-basic.forever(function () {
-    if (Player.isTouching(Sprite_1) || (Player.isTouching(Sprite_2) || Player.isTouching(Sprite_3) || (Player.isTouching(Sprite_4) || Player.isTouching(Sprite_5)))) {
-        game.gameOver()
-    }
-})
+let Sprite_1 = game.createSprite(0, 0)
+let Sprite_2 = game.createSprite(0, 0)
+let Sprite_3 = game.createSprite(0, 0)
+let Sprite_4 = game.createSprite(0, 0)
+let Sprite_5 = game.createSprite(0, 0)
 basic.forever(function () {
     while (game.isRunning()) {
+        Sprite_1.delete()
+        Sprite_2.delete()
+        Sprite_3.delete()
+        Sprite_4.delete()
+        Sprite_5.delete()
         Direction2 = randint(0, 3)
         if (Direction2 == 0) {
             Sprite_1 = game.createSprite(0, 4)
@@ -61,7 +61,7 @@ basic.forever(function () {
         Sprite_5.set(LedSpriteProperty.Direction, Direction2 * 90)
         Deleted_sprite = randint(0, 4)
         list = [Sprite_1, Sprite_2, Sprite_3, Sprite_4, Sprite_5]
-        list[Deleted_sprite].delete()
+        list[Deleted_sprite].set(LedSpriteProperty.Brightness, 0)
         for (let index = 0; index < 4; index++) {
             basic.pause(1000)
             Sprite_1.move(1)
@@ -71,10 +71,18 @@ basic.forever(function () {
             Sprite_5.move(1)
         }
         basic.pause(1000)
-        Sprite_1.delete()
-        Sprite_2.delete()
-        Sprite_3.delete()
-        Sprite_4.delete()
-        Sprite_5.delete()
+    }
+})
+basic.forever(function () {
+    if (Player.isTouching(Sprite_1) && Deleted_sprite != 0) {
+        game.gameOver()
+    } else if (Player.isTouching(Sprite_2) && Deleted_sprite != 1) {
+        game.gameOver()
+    } else if (Player.isTouching(Sprite_3) && Deleted_sprite != 2) {
+        game.gameOver()
+    } else if (Player.isTouching(Sprite_4) && Deleted_sprite != 3) {
+        game.gameOver()
+    } else if (Player.isTouching(Sprite_5) && Deleted_sprite != 4) {
+        game.gameOver()
     }
 })
