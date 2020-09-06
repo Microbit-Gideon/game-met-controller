@@ -10,9 +10,9 @@ WSJoyStick.onKey(KEY.F, function () {
 })
 WSJoyStick.onKey(KEY.P, function () {
     Muur = game.createSprite(0, 0)
-    Muur = game.createSprite(1, 0)
     for (let index = 0; index < 4; index++) {
         basic.pause(1000)
+        Muur.change(LedSpriteProperty.Y, 1)
     }
 })
 WSJoyStick.onKey(KEY.E, function () {
@@ -24,9 +24,9 @@ WSJoyStick.onKey(KEY.E, function () {
         }
         Noord_nummer += 1
     }
+    Noord_nummer = 0
     for (let index = 0; index < 4; index++) {
         basic.pause(450)
-        Noord_nummer.change(LedSpriteProperty.Y, 1)
     }
 })
 WSJoyStick.onKey(KEY.D, function () {
