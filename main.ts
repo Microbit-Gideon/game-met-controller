@@ -19,6 +19,7 @@ let Sprite_3: game.LedSprite = null
 let Sprite_2: game.LedSprite = null
 let Sprite_1: game.LedSprite = null
 let Player: game.LedSprite = null
+WSJoyStick.JoyStickInit()
 Player = game.createSprite(2, 2)
 basic.forever(function () {
     if (Player.isTouching(Sprite_1) || (Player.isTouching(Sprite_2) || Player.isTouching(Sprite_3) || (Player.isTouching(Sprite_4) || Player.isTouching(Sprite_5)))) {
