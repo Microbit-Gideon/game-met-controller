@@ -1,14 +1,23 @@
 WSJoyStick.onKey(KEY.F, function () {
     Player.change(LedSpriteProperty.X, -1)
 })
+WSJoyStick.onKey(KEY.A, function () {
+    game.pause()
+})
 WSJoyStick.onKey(KEY.E, function () {
-    Player.change(LedSpriteProperty.Y, 1)
+    Player.change(LedSpriteProperty.Y, -1)
 })
 WSJoyStick.onKey(KEY.D, function () {
     Player.change(LedSpriteProperty.X, 1)
 })
+input.onButtonPressed(Button.AB, function () {
+    control.reset()
+})
+WSJoyStick.onKey(KEY.B, function () {
+    game.resume()
+})
 WSJoyStick.onKey(KEY.C, function () {
-    Player.change(LedSpriteProperty.Y, -1)
+    Player.change(LedSpriteProperty.Y, 1)
 })
 let list: game.LedSprite[] = []
 let Deleted_sprite = 0
@@ -21,6 +30,8 @@ let Sprite_2 = game.createSprite(0, 0)
 let Sprite_3 = game.createSprite(0, 0)
 let Sprite_4 = game.createSprite(0, 0)
 let Sprite_5 = game.createSprite(0, 0)
+let Snelheid = 1000
+game.pause()
 basic.forever(function () {
     while (game.isRunning()) {
         Sprite_1.delete()
@@ -63,14 +74,15 @@ basic.forever(function () {
         list = [Sprite_1, Sprite_2, Sprite_3, Sprite_4, Sprite_5]
         list[Deleted_sprite].set(LedSpriteProperty.Brightness, 0)
         for (let index = 0; index < 4; index++) {
-            basic.pause(1000)
+            basic.pause(Snelheid)
             Sprite_1.move(1)
             Sprite_2.move(1)
             Sprite_3.move(1)
             Sprite_4.move(1)
             Sprite_5.move(1)
         }
-        basic.pause(1000)
+        basic.pause(Snelheid)
+        Snelheid += -50
     }
 })
 basic.forever(function () {
