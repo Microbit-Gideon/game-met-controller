@@ -1,3 +1,6 @@
+WSJoyStick.onKey(KEY.C, function () {
+    control.reset()
+})
 let Zuid_nummer: game.LedSprite = null
 let Oost_nummer: game.LedSprite = null
 let West_nummer: game.LedSprite = null
@@ -52,7 +55,7 @@ basic.forever(function () {
         sprite.change(LedSpriteProperty.Y, 1)
         sprite.change(LedSpriteProperty.X, 1)
     }
-    basic.pause(_300)
+    basic.pause(250)
 })
 basic.forever(function () {
     Richting = randint(1, 4)
