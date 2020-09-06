@@ -1,63 +1,20 @@
 WSJoyStick.onKey(KEY.F, function () {
     Random_nummer = randint(0, 4)
-    West_nummer = 0
-    for (let index = 0; index < 5; index++) {
-        if (Random_nummer != West_nummer) {
-            Muur_west = game.createSprite(0, West_nummer)
-        }
-        West_nummer += 1
-    }
-})
-WSJoyStick.onKey(KEY.P, function () {
-    Muur = game.createSprite(0, 0)
-    for (let index = 0; index < 4; index++) {
-        basic.pause(1000)
-        Muur.change(LedSpriteProperty.Y, 1)
-    }
+    Noord_nummer = game.createSprite(0, Random_nummer)
 })
 WSJoyStick.onKey(KEY.E, function () {
     Random_nummer = randint(0, 4)
-    Noord_nummer = 0
-    for (let index = 0; index < 5; index++) {
-        if (Random_nummer != Noord_nummer) {
-            Muur_noord = game.createSprite(Noord_nummer, 0)
-        }
-        Noord_nummer += 1
-    }
-    Noord_nummer = 0
-    for (let index = 0; index < 4; index++) {
-        basic.pause(450)
-    }
+    Noord_nummer = game.createSprite(Random_nummer, 0)
 })
 WSJoyStick.onKey(KEY.D, function () {
     Random_nummer = randint(0, 4)
-    Oost_nummer = 0
-    for (let index = 0; index < 5; index++) {
-        if (Random_nummer != Oost_nummer) {
-            Muur_oost = game.createSprite(4, Oost_nummer)
-        }
-        Oost_nummer += 1
-    }
+    Noord_nummer = game.createSprite(4, Random_nummer)
 })
 WSJoyStick.onKey(KEY.C, function () {
     Random_nummer = randint(0, 4)
-    Zuid_nummer = 0
-    for (let index = 0; index < 5; index++) {
-        if (Random_nummer != Zuid_nummer) {
-            Muur_zuid = game.createSprite(Zuid_nummer, 4)
-        }
-        Zuid_nummer += 1
-    }
+    Noord_nummer = game.createSprite(Random_nummer, 4)
 })
-let Muur_zuid: game.LedSprite = null
-let Zuid_nummer = 0
-let Muur_oost: game.LedSprite = null
-let Oost_nummer = 0
-let Muur_noord: game.LedSprite = null
-let Noord_nummer = 0
-let Muur: game.LedSprite = null
-let Muur_west: game.LedSprite = null
-let West_nummer = 0
+let Noord_nummer: game.LedSprite = null
 let Random_nummer = 0
 WSJoyStick.JoyStickInit()
 let sprite = game.createSprite(2, 2)
