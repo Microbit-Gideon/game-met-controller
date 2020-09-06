@@ -4,14 +4,14 @@ WSJoyStick.onKey(KEY.C, function () {
 let Zuid_nummer: game.LedSprite = null
 let Oost_nummer: game.LedSprite = null
 let West_nummer: game.LedSprite = null
+let Score = 0
 let Noord_nummer: game.LedSprite = null
+let Random_nummer = 0
+let Richting = 0
 let sprite = game.createSprite(2, 2)
 WSJoyStick.JoyStickInit()
 let _300 = 300
 let Tijd = 2000
-let Richting = 0
-let Random_nummer = 0
-let Score = 0
 basic.pause(1000)
 basic.forever(function () {
     if (Richting == 1) {
@@ -24,7 +24,6 @@ basic.forever(function () {
             Noord_nummer.change(LedSpriteProperty.Y, 1)
             if (Noord_nummer.isTouching(sprite)) {
                 music.playTone(147, music.beat(BeatFraction.Double))
-                game.setScore(Score)
                 game.gameOver()
             }
         }
@@ -75,7 +74,6 @@ basic.forever(function () {
             West_nummer.change(LedSpriteProperty.X, 1)
             if (West_nummer.isTouching(sprite)) {
                 music.playTone(147, music.beat(BeatFraction.Double))
-                game.setScore(Score)
                 game.gameOver()
             }
         }
@@ -98,7 +96,6 @@ basic.forever(function () {
             Oost_nummer.change(LedSpriteProperty.X, -1)
             if (Oost_nummer.isTouching(sprite)) {
                 music.playTone(147, music.beat(BeatFraction.Double))
-                game.setScore(Score)
                 game.gameOver()
             }
         }
@@ -121,7 +118,6 @@ basic.forever(function () {
             Zuid_nummer.change(LedSpriteProperty.Y, -1)
             if (Zuid_nummer.isTouching(sprite)) {
                 music.playTone(147, music.beat(BeatFraction.Double))
-                game.setScore(Score)
                 game.gameOver()
             }
         }
