@@ -6,9 +6,13 @@ WSJoyStick.onKey(KEY.F, function () {
     while (West_nummer.get(LedSpriteProperty.X) < 4) {
         basic.pause(400)
         West_nummer.change(LedSpriteProperty.X, 1)
+        if (West_nummer.isTouching(sprite)) {
+            game.gameOver()
+        }
     }
     basic.pause(400)
     West_nummer.delete()
+    game.addScore(1)
 })
 WSJoyStick.onKey(KEY.E, function () {
     Random_nummer = randint(0, 4)
@@ -18,9 +22,13 @@ WSJoyStick.onKey(KEY.E, function () {
     while (Noord_nummer.get(LedSpriteProperty.Y) < 4) {
         basic.pause(400)
         Noord_nummer.change(LedSpriteProperty.Y, 1)
+        if (Noord_nummer.isTouching(sprite)) {
+            game.gameOver()
+        }
     }
     basic.pause(400)
     Noord_nummer.delete()
+    game.addScore(1)
 })
 WSJoyStick.onKey(KEY.D, function () {
     Random_nummer = randint(0, 4)
@@ -30,9 +38,13 @@ WSJoyStick.onKey(KEY.D, function () {
     while (Oost_nummer.get(LedSpriteProperty.X) > 0) {
         basic.pause(400)
         Oost_nummer.change(LedSpriteProperty.X, -1)
+        if (Oost_nummer.isTouching(sprite)) {
+            game.gameOver()
+        }
     }
     basic.pause(400)
     Oost_nummer.delete()
+    game.addScore(1)
 })
 WSJoyStick.onKey(KEY.C, function () {
     Random_nummer = randint(0, 4)
@@ -42,18 +54,24 @@ WSJoyStick.onKey(KEY.C, function () {
     while (Zuid_nummer.get(LedSpriteProperty.Y) > 0) {
         basic.pause(400)
         Zuid_nummer.change(LedSpriteProperty.Y, -1)
+        if (Zuid_nummer.isTouching(sprite)) {
+            game.gameOver()
+        }
     }
     basic.pause(400)
     Zuid_nummer.delete()
+    game.addScore(1)
 })
 let Zuid_nummer: game.LedSprite = null
 let Oost_nummer: game.LedSprite = null
 let Noord_nummer: game.LedSprite = null
 let West_nummer: game.LedSprite = null
 let Random_nummer = 0
+let sprite: game.LedSprite = null
 WSJoyStick.JoyStickInit()
-let sprite = game.createSprite(2, 2)
+sprite = game.createSprite(2, 2)
 let _300 = 300
+game.setScore(0)
 basic.forever(function () {
     if (WSJoyStick.Listen_Dir(DIR.U)) {
         sprite.change(LedSpriteProperty.Y, -1)
