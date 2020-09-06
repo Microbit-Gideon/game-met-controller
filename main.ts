@@ -1,77 +1,35 @@
-WSJoyStick.onKey(KEY.F, function () {
-    Random_nummer = randint(0, 4)
-    West_nummer = game.createSprite(0, Random_nummer)
-    basic.pause(400)
-    West_nummer.change(LedSpriteProperty.X, 1)
-    while (West_nummer.get(LedSpriteProperty.X) < 4) {
-        basic.pause(400)
-        West_nummer.change(LedSpriteProperty.X, 1)
-        if (West_nummer.isTouching(sprite)) {
-            game.gameOver()
-        }
-    }
-    basic.pause(400)
-    West_nummer.delete()
-    game.addScore(1)
-})
-WSJoyStick.onKey(KEY.E, function () {
-    Random_nummer = randint(0, 4)
-    Noord_nummer = game.createSprite(Random_nummer, 0)
-    basic.pause(400)
-    Noord_nummer.change(LedSpriteProperty.Y, 1)
-    while (Noord_nummer.get(LedSpriteProperty.Y) < 4) {
-        basic.pause(400)
-        Noord_nummer.change(LedSpriteProperty.Y, 1)
-        if (Noord_nummer.isTouching(sprite)) {
-            game.gameOver()
-        }
-    }
-    basic.pause(400)
-    Noord_nummer.delete()
-    game.addScore(1)
-})
-WSJoyStick.onKey(KEY.D, function () {
-    Random_nummer = randint(0, 4)
-    Oost_nummer = game.createSprite(4, Random_nummer)
-    basic.pause(400)
-    Oost_nummer.change(LedSpriteProperty.X, -1)
-    while (Oost_nummer.get(LedSpriteProperty.X) > 0) {
-        basic.pause(400)
-        Oost_nummer.change(LedSpriteProperty.X, -1)
-        if (Oost_nummer.isTouching(sprite)) {
-            game.gameOver()
-        }
-    }
-    basic.pause(400)
-    Oost_nummer.delete()
-    game.addScore(1)
-})
-WSJoyStick.onKey(KEY.C, function () {
-    Random_nummer = randint(0, 4)
-    Zuid_nummer = game.createSprite(Random_nummer, 4)
-    basic.pause(400)
-    Zuid_nummer.change(LedSpriteProperty.Y, -1)
-    while (Zuid_nummer.get(LedSpriteProperty.Y) > 0) {
-        basic.pause(400)
-        Zuid_nummer.change(LedSpriteProperty.Y, -1)
-        if (Zuid_nummer.isTouching(sprite)) {
-            game.gameOver()
-        }
-    }
-    basic.pause(400)
-    Zuid_nummer.delete()
-    game.addScore(1)
-})
 let Zuid_nummer: game.LedSprite = null
 let Oost_nummer: game.LedSprite = null
-let Noord_nummer: game.LedSprite = null
 let West_nummer: game.LedSprite = null
+let Noord_nummer: game.LedSprite = null
 let Random_nummer = 0
-let sprite: game.LedSprite = null
+let Richting = 0
 WSJoyStick.JoyStickInit()
-sprite = game.createSprite(2, 2)
+let sprite = game.createSprite(2, 2)
 let _300 = 300
 game.setScore(0)
+let Tijd = 2000
+basic.forever(function () {
+    if (Richting == 1) {
+        Random_nummer = randint(0, 4)
+        Noord_nummer = game.createSprite(Random_nummer, 0)
+        basic.pause(350)
+        Noord_nummer.change(LedSpriteProperty.Y, 1)
+        while (Noord_nummer.get(LedSpriteProperty.Y) < 4) {
+            basic.pause(350)
+            Noord_nummer.change(LedSpriteProperty.Y, 1)
+            if (Noord_nummer.isTouching(sprite)) {
+                game.gameOver()
+            }
+        }
+        basic.pause(350)
+        if (Tijd != 350) {
+            Tijd += -50
+        }
+        Noord_nummer.delete()
+        game.addScore(1)
+    }
+})
 basic.forever(function () {
     if (WSJoyStick.Listen_Dir(DIR.U)) {
         sprite.change(LedSpriteProperty.Y, -1)
@@ -101,5 +59,72 @@ basic.forever(function () {
         sprite.change(LedSpriteProperty.Y, 1)
         sprite.change(LedSpriteProperty.X, 1)
         basic.pause(_300)
+    }
+})
+basic.forever(function () {
+    Richting = randint(1, 4)
+    basic.pause(Tijd)
+})
+basic.forever(function () {
+    if (Richting == 4) {
+        Random_nummer = randint(0, 4)
+        West_nummer = game.createSprite(0, Random_nummer)
+        basic.pause(350)
+        West_nummer.change(LedSpriteProperty.X, 1)
+        while (West_nummer.get(LedSpriteProperty.X) < 4) {
+            basic.pause(350)
+            West_nummer.change(LedSpriteProperty.X, 1)
+            if (West_nummer.isTouching(sprite)) {
+                game.gameOver()
+            }
+        }
+    }
+    basic.pause(350)
+    if (Tijd != 350) {
+        Tijd += -50
+    }
+    West_nummer.delete()
+    game.addScore(1)
+})
+basic.forever(function () {
+    if (Richting == 2) {
+        Random_nummer = randint(0, 4)
+        Oost_nummer = game.createSprite(4, Random_nummer)
+        basic.pause(350)
+        Oost_nummer.change(LedSpriteProperty.X, -1)
+        while (Oost_nummer.get(LedSpriteProperty.X) > 0) {
+            basic.pause(350)
+            Oost_nummer.change(LedSpriteProperty.X, -1)
+            if (Oost_nummer.isTouching(sprite)) {
+                game.gameOver()
+            }
+        }
+        basic.pause(350)
+        if (Tijd != 350) {
+            Tijd += -50
+        }
+        Oost_nummer.delete()
+        game.addScore(1)
+    }
+})
+basic.forever(function () {
+    if (Richting == 3) {
+        Random_nummer = randint(0, 4)
+        Zuid_nummer = game.createSprite(Random_nummer, 4)
+        basic.pause(350)
+        Zuid_nummer.change(LedSpriteProperty.Y, -1)
+        while (Zuid_nummer.get(LedSpriteProperty.Y) > 0) {
+            basic.pause(350)
+            Zuid_nummer.change(LedSpriteProperty.Y, -1)
+            if (Zuid_nummer.isTouching(sprite)) {
+                game.gameOver()
+            }
+        }
+        basic.pause(350)
+        if (Tijd != 350) {
+            Tijd += -50
+        }
+        Zuid_nummer.delete()
+        game.addScore(1)
     }
 })
