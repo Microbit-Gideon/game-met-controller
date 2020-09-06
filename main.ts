@@ -11,6 +11,7 @@ let _300 = 300
 let Tijd = 2000
 let Richting = 0
 let Random_nummer = 0
+let Score = 0
 basic.pause(1000)
 basic.forever(function () {
     if (Richting == 1) {
@@ -22,8 +23,9 @@ basic.forever(function () {
             basic.pause(350)
             Noord_nummer.change(LedSpriteProperty.Y, 1)
             if (Noord_nummer.isTouching(sprite)) {
+                music.playTone(147, music.beat(BeatFraction.Double))
+                game.setScore(Score)
                 game.gameOver()
-                WSJoyStick.PlayMusic(147, music.beat(BeatFraction.Double))
             }
         }
         basic.pause(350)
@@ -31,6 +33,7 @@ basic.forever(function () {
             Tijd += -50
         }
         Noord_nummer.delete()
+        Score += 1
     }
 })
 basic.forever(function () {
@@ -71,8 +74,9 @@ basic.forever(function () {
             basic.pause(350)
             West_nummer.change(LedSpriteProperty.X, 1)
             if (West_nummer.isTouching(sprite)) {
+                music.playTone(147, music.beat(BeatFraction.Double))
+                game.setScore(Score)
                 game.gameOver()
-                WSJoyStick.PlayMusic(147, music.beat(BeatFraction.Double))
             }
         }
         basic.pause(350)
@@ -80,6 +84,7 @@ basic.forever(function () {
             Tijd += -50
         }
         West_nummer.delete()
+        Score += 1
     }
 })
 basic.forever(function () {
@@ -92,8 +97,9 @@ basic.forever(function () {
             basic.pause(350)
             Oost_nummer.change(LedSpriteProperty.X, -1)
             if (Oost_nummer.isTouching(sprite)) {
+                music.playTone(147, music.beat(BeatFraction.Double))
+                game.setScore(Score)
                 game.gameOver()
-                WSJoyStick.PlayMusic(147, music.beat(BeatFraction.Double))
             }
         }
         basic.pause(350)
@@ -101,6 +107,7 @@ basic.forever(function () {
             Tijd += -50
         }
         Oost_nummer.delete()
+        Score += 1
     }
 })
 basic.forever(function () {
@@ -113,8 +120,9 @@ basic.forever(function () {
             basic.pause(350)
             Zuid_nummer.change(LedSpriteProperty.Y, -1)
             if (Zuid_nummer.isTouching(sprite)) {
+                music.playTone(147, music.beat(BeatFraction.Double))
+                game.setScore(Score)
                 game.gameOver()
-                WSJoyStick.PlayMusic(147, music.beat(BeatFraction.Double))
             }
         }
         basic.pause(350)
@@ -122,5 +130,6 @@ basic.forever(function () {
             Tijd += -50
         }
         Zuid_nummer.delete()
+        Score += 1
     }
 })
